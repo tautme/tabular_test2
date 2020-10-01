@@ -23,3 +23,5 @@ boosting ssas prod/ w/ tabular editor
 
 calculating groups
 
+20201001
+1529 created and cloned repo, now this is the first commit in Visual Studio
