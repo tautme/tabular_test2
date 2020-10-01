@@ -45,3 +45,6 @@
 15. 'Delete Branch'
 16. Next time you make changes to branch, you 'push' (no need to publish branch again)
 17. *every time you go to work on local version always pull (step 03.iv.) before looking at files and editing.
+
+
+Ref. https://guides.github.com/features/mastering-markdown/index.html
