@@ -1,0 +1,1830 @@
+{
+  "name": "b0cc677c-5a66-4c6b-8c48-9a5fc0e819c2",
+  "compatibilityLevel": 1520,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "data_funded0",
+        "columns": [
+          {
+            "name": "UID",
+            "dataType": "string",
+            "sourceColumn": "UID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "UID"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Source",
+            "dataType": "string",
+            "sourceColumn": "Source",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Source"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Target",
+            "dataType": "string",
+            "sourceColumn": "Target",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Target"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "IP_Status",
+            "dataType": "string",
+            "sourceColumn": "IP_Status",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "IP_Status"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Signature.Area",
+            "dataType": "string",
+            "sourceColumn": "Signature.Area",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Signature.Area"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "SourceTarget",
+            "dataType": "string",
+            "sourceColumn": "SourceTarget",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "SourceTarget"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "data_funded0-c156b3a7-1bf2-4024-9a22-c2f1c65d1262",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = R.Execute(\"## 2018 June 08#(lf)## make sript for data upload in power bi and make network graphics#(lf)## https://www.youtube.com/results?search_query=power%20bi%20r%20script#(lf)#(lf)library(igraph)#(lf)# import data FY 2014-2017 Faculty Active 2016#(lf)csv_data <- \"\"O:/Documents/R_metrics/Network_metrics/Proposal_Network/Signature_Area_Proposals_Source_Target_Stacked.csv\"\"#(lf)#(lf)data000 <- read.csv(csv_data, na.strings=c(\"\"\"\", \"\"NA\"\"), sep=\"\",\"\")#(lf)#(lf)## add a unique identifier (UID)#(lf)data000 <- cbind(UID = rownames(data000), data000)#(lf)#(lf)## enter here the names of the column header, with quotes#(lf)var1 <- \"\"IP_Status\"\"#(lf)var2 <- \"\"Signature.Area\"\"#(lf)var_source <- \"\"PI.Name\"\"#(lf)var_target <- \"\"COI.Name\"\"#(lf)UID <- \"\"UID\"\"#(lf)#(lf)## remove unneeded columns#(lf)data_drop0 <- data000[ c(UID, var_source, var_target, var1, var2) ]#(lf)#(lf)# Remove blank source#(lf)data02 <- na.omit(data_drop0)#(lf)#(lf)## will wait to add this variable later#(lf)## for now we will just filter for funded manually#(lf)data_funded0 <- data02[data02$IP_Status==\"\"Funded\"\",]#(lf)#(lf)## What if I left out funded so that I could also see other IP_Staus?#(lf)data_funded0 <- data02#(lf)#(lf)## Here we can also sort the SA groups out#(lf)## for now there is only \"\"data analytics\"\"#(lf)## so first we will get unique#(lf)sig_areas <- unique(data02$Signature.Area)#(lf)#(lf)## this object has all of the signature areas#(lf)sig_areas#(lf)sig_areas_char <- as.character(sig_areas)#(lf)#(lf)## now loop through all signagure areas#(lf)## this would be cleaner if it was a list of dataframes instead of seperate dataframes#(lf)## I think, first you must create the list as a shell and then fill it#(lf)#(lf)## with the new data there is not a source and target named column#(lf)colnames(data_funded0)[2] <- \"\"Source\"\"#(lf)colnames(data_funded0)[3] <- \"\"Target\"\"#(lf)#(lf)## WARNING #(tab)\"\"This is a convenience function intended for use interactively. For programming it is better to use the standard subsetting functions like [, #(lf)###(tab)#(tab)#(tab) and in particular the non-standard evaluation of argument subset can have unanticipated consequences.\"\"#(lf)data_funded_sig_all <- lapply(sig_areas_char, function(x)#(lf)  subset(data_funded0, Signature.Area == x, select = c(Source, Target))#(lf))#(lf)names(data_funded_sig_all) <- sig_areas_char#(lf)#(lf)bigdata <- graph_from_data_frame(data_funded_sig_all$`Data Analytics/Big Data/Data Science/Data Visualization`)#(lf)#energydata <- graph_from_data_frame(data_funded_sig_all$`Energy/Resilient Infrastructure`)#(lf)#(lf)## create metrics for all#(lf)bigDataTotalDegree <- degree(bigdata, mode = \"\"all\"\")#(lf)bigDataTotalDegree <- as.data.frame(bigDataTotalDegree)#(lf)bigDataTotalDegree <- cbind(Row.Names = rownames(bigDataTotalDegree), bigDataTotalDegree)#(lf)#(lf)#(lf)## now create new data frame with all source and target names no duplications#(lf)#(lf)temp1 <- as.vector(data_funded0$Source)#(lf)temp2 <- as.vector(data_funded0$Target)#(lf)temp3 <- append(temp1, temp2)#(lf)Faculty <- as.data.frame(temp3)#(lf)Faculty <- unique(Faculty$temp3)#(lf)Faculty <- as.data.frame(Faculty)\"),",
+                "    data_funded1 = Source{[Name=\"data_funded0\"]}[Value],",
+                "    #\"Added Custom\" = Table.AddColumn(data_funded1, \"SourceTarget\", each [Source])",
+                "in",
+                "    #\"Added Custom\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":6,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/data_funded0/data_funded1.{UID,0}\",\"Section1/data_funded0/data_funded1.{Source,1}\",\"Section1/data_funded0/data_funded1.{Target,2}\",\"Section1/data_funded0/data_funded1.{IP_Status,3}\",\"Section1/data_funded0/data_funded1.{Signature.Area,4}\",\"Section1/data_funded0/Added Custom.{SourceTarget,5}\"],\"ColumnCount\":6,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/data_funded0/data_funded1.{UID,0}\",\"Section1/data_funded0/data_funded1.{Source,1}\",\"Section1/data_funded0/data_funded1.{Target,2}\",\"Section1/data_funded0/data_funded1.{IP_Status,3}\",\"Section1/data_funded0/data_funded1.{Signature.Area,4}\",\"Section1/data_funded0/Added Custom.{SourceTarget,5}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_f426e077-1128-4d7a-8f8a-52b07b285850",
+        "isHidden": true,
+        "isPrivate": true,
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Date",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[Date]",
+            "dataCategory": "PaddedDateTableDates",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"GeneralDateTimeLong\" FormatString=\"G\" /></DateTimes></Format>"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "DateTime#####not a type"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "YEAR([Date])",
+            "dataCategory": "Years",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "MonthNo",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "MONTH([Date])",
+            "dataCategory": "MonthOfYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Month",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "sortByColumn": "MonthNo",
+            "dataCategory": "Months",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "QuarterNo",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "dataCategory": "QuarterOfYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Quarter",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "sortByColumn": "QuarterNo",
+            "dataCategory": "Quarters",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Day",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "DAY([Date])",
+            "dataCategory": "DayOfMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DateTableTemplate_f426e077-1128-4d7a-8f8a-52b07b285850-dc8d7e38-d304-4202-be07-7bfe822428a3",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter"
+              },
+              {
+                "name": "Month",
+                "ordinal": 2,
+                "column": "Month"
+              },
+              {
+                "name": "Day",
+                "ordinal": 3,
+                "column": "Day"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ]
+      },
+      {
+        "name": "bigDataTotalDegree",
+        "columns": [
+          {
+            "name": "bigDataTotalDegree",
+            "dataType": "double",
+            "sourceColumn": "bigDataTotalDegree",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "bigDataTotalDegree"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Name"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "bigDataTotalDegree-0f632e1f-5d92-4bc3-bb4f-f5c196ba5bb8",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = R.Execute(\"## 2018 June 08#(lf)## make sript for data upload in power bi and make network graphics#(lf)## https://www.youtube.com/results?search_query=power%20bi%20r%20script#(lf)#(lf)#(lf)library(igraph)#(lf)# import data#(lf)csv_data <- \"\"O:/Documents/R_metrics/Network_metrics/Proposal_Network/Signature_Area_Proposals_Source_Target_Stacked.csv\"\"#(lf)#(lf)data000 <- read.csv(csv_data, na.strings=c(\"\"\"\", \"\"NA\"\"), sep=\"\",\"\")#(lf)#(lf)## enter here the names of the column header, with quotes#(lf)var1 <- \"\"IP_Status\"\"#(lf)var2 <- \"\"Signature.Area\"\"#(lf)var_source <- \"\"PI.Name\"\"#(lf)var_target <- \"\"COI.Name\"\"#(lf)#(lf)## remove unneeded columns#(lf)data_drop0 <- data000[ c(var_source, var_target, var1, var2) ]#(lf)#(lf)# Remove blank source#(lf)data02 <- na.omit(data_drop0)#(lf)#(lf)## will wait to add this variable later#(lf)## for now we will just filter for funded manually#(lf)data_funded0 <- data02[data02$IP_Status==\"\"Funded\"\",]#(lf)#(lf)## Here we can also sort the SA groups out#(lf)## for now there is only \"\"data analytics\"\"#(lf)## so first we will get unique#(lf)sig_areas <- unique(data02$Signature.Area)#(lf)#(lf)## this object has all of the signature areas#(lf)sig_areas#(lf)sig_areas_char <- as.character(sig_areas)#(lf)#(lf)## now loop through all signagure areas#(lf)## this would be cleaner if it was a list of dataframes instead of seperate dataframes#(lf)## I think, first you must create the list as a shell and then fill it#(lf)#(lf)## with the new data there is not a source and target named column#(lf)colnames(data_funded0)[1] <- \"\"Source\"\"#(lf)colnames(data_funded0)[2] <- \"\"Target\"\"#(lf)#(lf)## WARNING #(tab)\"\"This is a convenience function intended for use interactively. For programming it is better to use the standard subsetting functions like [, #(lf)###(tab)#(tab)#(tab) and in particular the non-standard evaluation of argument subset can have unanticipated consequences.\"\"#(lf)data_funded_sig_all <- lapply(sig_areas_char, function(x)#(lf)  subset(data_funded0, Signature.Area == x, select = c(Source, Target))#(lf))#(lf)names(data_funded_sig_all) <- sig_areas_char#(lf)#(lf)bigdata <- graph_from_data_frame(data_funded_sig_all$`Data Analytics/Big Data/Data Science/Data Visualization`)#(lf)#energydata <- graph_from_data_frame(data_funded_sig_all$`Energy/Resilient Infrastructure`)#(lf)#(lf)## create metrics for all#(lf)bigDataTotalDegree <- degree(bigdata, mode = \"\"all\"\")#(lf)bigDataTotalDegree <- as.data.frame(bigDataTotalDegree)#(lf)bigDataTotalDegree <- cbind(Name = rownames(bigDataTotalDegree), bigDataTotalDegree)\"),",
+                "    bigDataTotalDegree1 = Source{[Name=\"bigDataTotalDegree\"]}[Value]",
+                "in",
+                "    bigDataTotalDegree1"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":2,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/bigDataTotalDegree/bigDataTotalDegree1.{Name,0}\",\"Section1/bigDataTotalDegree/bigDataTotalDegree1.{bigDataTotalDegree,1}\"],\"ColumnCount\":2,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/bigDataTotalDegree/bigDataTotalDegree1.{Name,0}\",\"Section1/bigDataTotalDegree/bigDataTotalDegree1.{bigDataTotalDegree,1}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "data_funded0 (2)",
+        "columns": [
+          {
+            "name": "UID",
+            "dataType": "string",
+            "sourceColumn": "UID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "UID"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Source",
+            "dataType": "string",
+            "sourceColumn": "Source",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Source"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Target",
+            "dataType": "string",
+            "sourceColumn": "Target",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Target"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "IP_Status",
+            "dataType": "string",
+            "sourceColumn": "IP_Status",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "IP_Status"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Signature.Area",
+            "dataType": "string",
+            "sourceColumn": "Signature.Area",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Signature.Area"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "SourceTarget",
+            "dataType": "string",
+            "sourceColumn": "SourceTarget",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "SourceTarget"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "data_funded0 (2)-9dff6b5f-b357-4760-a4e3-e7f54174fe7b",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = R.Execute(\"## 2018 June 08#(lf)## make sript for data upload in power bi and make network graphics#(lf)## https://www.youtube.com/results?search_query=power%20bi%20r%20script#(lf)#(lf)library(igraph)#(lf)# import data#(lf)csv_data <- \"\"O:/Documents/R_metrics/Network_metrics/Proposal_Network/Signature_Area_Proposals_Source_Target_Stacked.csv\"\"#(lf)#(lf)data000 <- read.csv(csv_data, na.strings=c(\"\"\"\", \"\"NA\"\"), sep=\"\",\"\")#(lf)#(lf)## add a unique identifier (UID)#(lf)data000 <- cbind(UID = rownames(data000), data000)#(lf)#(lf)## enter here the names of the column header, with quotes#(lf)var1 <- \"\"IP_Status\"\"#(lf)var2 <- \"\"Signature.Area\"\"#(lf)var_source <- \"\"PI.Name\"\"#(lf)var_target <- \"\"COI.Name\"\"#(lf)UID <- \"\"UID\"\"#(lf)#(lf)## remove unneeded columns#(lf)data_drop0 <- data000[ c(UID, var_source, var_target, var1, var2) ]#(lf)#(lf)# Remove blank source#(lf)data02 <- na.omit(data_drop0)#(lf)#(lf)## will wait to add this variable later#(lf)## for now we will just filter for funded manually#(lf)data_funded0 <- data02[data02$IP_Status==\"\"Funded\"\",]#(lf)#(lf)## Here we can also sort the SA groups out#(lf)## for now there is only \"\"data analytics\"\"#(lf)## so first we will get unique#(lf)sig_areas <- unique(data02$Signature.Area)#(lf)#(lf)## this object has all of the signature areas#(lf)sig_areas#(lf)sig_areas_char <- as.character(sig_areas)#(lf)#(lf)## now loop through all signagure areas#(lf)## this would be cleaner if it was a list of dataframes instead of seperate dataframes#(lf)## I think, first you must create the list as a shell and then fill it#(lf)#(lf)## with the new data there is not a source and target named column#(lf)colnames(data_funded0)[2] <- \"\"Source\"\"#(lf)colnames(data_funded0)[3] <- \"\"Target\"\"#(lf)#(lf)## WARNING #(tab)\"\"This is a convenience function intended for use interactively. For programming it is better to use the standard subsetting functions like [, #(lf)###(tab)#(tab)#(tab) and in particular the non-standard evaluation of argument subset can have unanticipated consequences.\"\"#(lf)data_funded_sig_all <- lapply(sig_areas_char, function(x)#(lf)  subset(data_funded0, Signature.Area == x, select = c(Source, Target))#(lf))#(lf)names(data_funded_sig_all) <- sig_areas_char#(lf)#(lf)bigdata <- graph_from_data_frame(data_funded_sig_all$`Data Analytics/Big Data/Data Science/Data Visualization`)#(lf)#energydata <- graph_from_data_frame(data_funded_sig_all$`Energy/Resilient Infrastructure`)#(lf)#(lf)## create metrics for all#(lf)bigDataTotalDegree <- degree(bigdata, mode = \"\"all\"\")#(lf)bigDataTotalDegree <- as.data.frame(bigDataTotalDegree)#(lf)bigDataTotalDegree <- cbind(Row.Names = rownames(bigDataTotalDegree), bigDataTotalDegree)#(lf)#(lf)#(lf)## now create new data frame with all source and target names no duplications#(lf)#(lf)temp1 <- as.vector(data_funded0$Source)#(lf)temp2 <- as.vector(data_funded0$Target)#(lf)temp3 <- append(temp1, temp2)#(lf)Faculty <- as.data.frame(temp3)#(lf)Faculty <- unique(Faculty$temp3)#(lf)Faculty <- as.data.frame(Faculty)\"),",
+                "    data_funded1 = Source{[Name=\"data_funded0\"]}[Value],",
+                "    #\"Added Custom\" = Table.AddColumn(data_funded1, \"SourceTarget\", each [Target])",
+                "in",
+                "    #\"Added Custom\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":6,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/data_funded0 (2)/data_funded1.{UID,0}\",\"Section1/data_funded0 (2)/data_funded1.{Source,1}\",\"Section1/data_funded0 (2)/data_funded1.{Target,2}\",\"Section1/data_funded0 (2)/data_funded1.{IP_Status,3}\",\"Section1/data_funded0 (2)/data_funded1.{Signature.Area,4}\",\"Section1/data_funded0 (2)/Added Custom.{SourceTarget,5}\"],\"ColumnCount\":6,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/data_funded0 (2)/data_funded1.{UID,0}\",\"Section1/data_funded0 (2)/data_funded1.{Source,1}\",\"Section1/data_funded0 (2)/data_funded1.{Target,2}\",\"Section1/data_funded0 (2)/data_funded1.{IP_Status,3}\",\"Section1/data_funded0 (2)/data_funded1.{Signature.Area,4}\",\"Section1/data_funded0 (2)/Added Custom.{SourceTarget,5}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Append1",
+        "columns": [
+          {
+            "name": "UID",
+            "dataType": "string",
+            "sourceColumn": "UID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "UID"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Source",
+            "dataType": "string",
+            "sourceColumn": "Source",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Source"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Target",
+            "dataType": "string",
+            "sourceColumn": "Target",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Target"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "IP_Status",
+            "dataType": "string",
+            "sourceColumn": "IP_Status",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "IP_Status"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Signature.Area",
+            "dataType": "string",
+            "sourceColumn": "Signature.Area",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Signature.Area"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "SourceTarget",
+            "dataType": "string",
+            "sourceColumn": "SourceTarget",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "SourceTarget"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Append1-0b496a78-c1e7-4dbf-a315-c41999fabd78",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.Combine({data_funded0, #\"data_funded0 (2)\"})",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Edge Count",
+            "expression": "COUNT(Append1[UID])",
+            "formatString": "0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":6,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/Append1/Source.{UID,0}\",\"Section1/Append1/Source.{Source,1}\",\"Section1/Append1/Source.{Target,2}\",\"Section1/Append1/Source.{IP_Status,3}\",\"Section1/Append1/Source.{Signature.Area,4}\",\"Section1/Append1/Source.{SourceTarget,5}\"],\"ColumnCount\":6,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/Append1/Source.{UID,0}\",\"Section1/Append1/Source.{Source,1}\",\"Section1/Append1/Source.{Target,2}\",\"Section1/Append1/Source.{IP_Status,3}\",\"Section1/Append1/Source.{Signature.Area,4}\",\"Section1/Append1/Source.{SourceTarget,5}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Faculty",
+        "columns": [
+          {
+            "name": "Faculty",
+            "dataType": "string",
+            "sourceColumn": "Faculty",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Faculty"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Faculty-20027ead-07a9-4734-8b16-e6d01eaff0c6",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = R.Execute(\"## 2018 June 08#(lf)## make sript for data upload in power bi and make network graphics#(lf)## https://www.youtube.com/results?search_query=power%20bi%20r%20script#(lf)#(lf)library(igraph)#(lf)# import data#(lf)csv_data <- \"\"O:/Documents/R_metrics/Network_metrics/Proposal_Network/Signature_Area_Proposals_Source_Target_Stacked.csv\"\"#(lf)#(lf)data000 <- read.csv(csv_data, na.strings=c(\"\"\"\", \"\"NA\"\"), sep=\"\",\"\")#(lf)#(lf)## add a unique identifier (UID)#(lf)data000 <- cbind(UID = rownames(data000), data000)#(lf)#(lf)## enter here the names of the column header, with quotes#(lf)var1 <- \"\"IP_Status\"\"#(lf)var2 <- \"\"Signature.Area\"\"#(lf)var_source <- \"\"PI.Name\"\"#(lf)var_target <- \"\"COI.Name\"\"#(lf)UID <- \"\"UID\"\"#(lf)#(lf)## remove unneeded columns#(lf)data_drop0 <- data000[ c(UID, var_source, var_target, var1, var2) ]#(lf)#(lf)# Remove blank source#(lf)data02 <- na.omit(data_drop0)#(lf)#(lf)## will wait to add this variable later#(lf)## for now we will just filter for funded manually#(lf)data_funded0 <- data02[data02$IP_Status==\"\"Funded\"\",]#(lf)#(lf)## What if I left out funded so that I could also see other IP_Staus?#(lf)data_funded0 <- data02#(lf)#(lf)## Here we can also sort the SA groups out#(lf)## for now there is only \"\"data analytics\"\"#(lf)## so first we will get unique#(lf)sig_areas <- unique(data02$Signature.Area)#(lf)#(lf)## this object has all of the signature areas#(lf)sig_areas#(lf)sig_areas_char <- as.character(sig_areas)#(lf)#(lf)## now loop through all signagure areas#(lf)## this would be cleaner if it was a list of dataframes instead of seperate dataframes#(lf)## I think, first you must create the list as a shell and then fill it#(lf)#(lf)## with the new data there is not a source and target named column#(lf)colnames(data_funded0)[2] <- \"\"Source\"\"#(lf)colnames(data_funded0)[3] <- \"\"Target\"\"#(lf)#(lf)## WARNING #(tab)\"\"This is a convenience function intended for use interactively. For programming it is better to use the standard subsetting functions like [, #(lf)###(tab)#(tab)#(tab) and in particular the non-standard evaluation of argument subset can have unanticipated consequences.\"\"#(lf)data_funded_sig_all <- lapply(sig_areas_char, function(x)#(lf)  subset(data_funded0, Signature.Area == x, select = c(Source, Target))#(lf))#(lf)names(data_funded_sig_all) <- sig_areas_char#(lf)#(lf)bigdata <- graph_from_data_frame(data_funded_sig_all$`Data Analytics/Big Data/Data Science/Data Visualization`)#(lf)#energydata <- graph_from_data_frame(data_funded_sig_all$`Energy/Resilient Infrastructure`)#(lf)#(lf)## create metrics for all#(lf)bigDataTotalDegree <- degree(bigdata, mode = \"\"all\"\")#(lf)bigDataTotalDegree <- as.data.frame(bigDataTotalDegree)#(lf)bigDataTotalDegree <- cbind(Row.Names = rownames(bigDataTotalDegree), bigDataTotalDegree)#(lf)#(lf)#(lf)## now create new data frame with all source and target names no duplications#(lf)#(lf)temp1 <- as.vector(data_funded0$Source)#(lf)temp2 <- as.vector(data_funded0$Target)#(lf)temp3 <- append(temp1, temp2)#(lf)Faculty <- as.data.frame(temp3)#(lf)Faculty <- unique(Faculty$temp3)#(lf)Faculty <- as.data.frame(Faculty)\"),",
+                "    Faculty1 = Source{[Name=\"Faculty\"]}[Value]",
+                "in",
+                "    Faculty1"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Faculty Count",
+            "expression": "COUNT(Faculty[Faculty])",
+            "formatString": "0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":1,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/Faculty/Faculty1.{Faculty,0}\"],\"ColumnCount\":1,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/Faculty/Faculty1.{Faculty,0}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Export_Network_Data",
+        "columns": [
+          {
+            "name": "Source",
+            "dataType": "string",
+            "sourceColumn": "Source",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Source"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Target",
+            "dataType": "string",
+            "sourceColumn": "Target",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Target"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Weight",
+            "dataType": "int64",
+            "sourceColumn": "Weight",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Weight"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Data_Source",
+            "dataType": "string",
+            "sourceColumn": "Data_Source",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Data_Source"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Year"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Node_Type",
+            "dataType": "string",
+            "sourceColumn": "Node_Type",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Node_Type"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "College",
+            "dataType": "string",
+            "sourceColumn": "College",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "College"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Lead_Unit",
+            "dataType": "string",
+            "sourceColumn": "Lead_Unit",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Lead_Unit"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Data_Source_UID",
+            "dataType": "string",
+            "sourceColumn": "Data_Source_UID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Data_Source_UID"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Source_ID",
+            "dataType": "string",
+            "sourceColumn": "Source_ID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Source_ID"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "Target_ID",
+            "dataType": "string",
+            "sourceColumn": "Target_ID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "Target_ID"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Export_Network_Data-1d6094bb-bc5c-4a68-9240-ee2073534f0a",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"U:\\!DataIn\\Networks\\Export_Network_Data.csv\"),[Delimiter=\",\", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Source\", type text}, {\"Target\", type text}, {\"Weight\", Int64.Type}, {\"Data_Source\", type text}, {\"Year\", Int64.Type}, {\"Node_Type\", type text}, {\"College\", type text}, {\"Lead_Unit\", type text}, {\"Data_Source_UID\", type text}, {\"Source_ID\", type text}, {\"Target_ID\", type text}}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Changed Type\", each ([Target] <> \"\") and ([Source] <> \"\"))",
+                "in",
+                "    #\"Filtered Rows\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Node Count",
+            "expression": "COUNT(Export_Network_Data[Source]) + COUNT(Export_Network_Data[Target])",
+            "formatString": "0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          },
+          {
+            "name": "Edge Measure",
+            "expression": "COUNT(Export_Network_Data[Data_Source_UID])",
+            "formatString": "0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":11,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/Export_Network_Data/Changed Type.{Source,0}\",\"Section1/Export_Network_Data/Changed Type.{Target,1}\",\"Section1/Export_Network_Data/Changed Type.{Weight,2}\",\"Section1/Export_Network_Data/Changed Type.{Data_Source,3}\",\"Section1/Export_Network_Data/Changed Type.{Year,4}\",\"Section1/Export_Network_Data/Changed Type.{Node_Type,5}\",\"Section1/Export_Network_Data/Changed Type.{College,6}\",\"Section1/Export_Network_Data/Changed Type.{Lead_Unit,7}\",\"Section1/Export_Network_Data/Changed Type.{Data_Source_UID,8}\",\"Section1/Export_Network_Data/Changed Type.{Source_ID,9}\",\"Section1/Export_Network_Data/Changed Type.{Target_ID,10}\"],\"ColumnCount\":11,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/Export_Network_Data/Changed Type.{Source,0}\",\"Section1/Export_Network_Data/Changed Type.{Target,1}\",\"Section1/Export_Network_Data/Changed Type.{Weight,2}\",\"Section1/Export_Network_Data/Changed Type.{Data_Source,3}\",\"Section1/Export_Network_Data/Changed Type.{Year,4}\",\"Section1/Export_Network_Data/Changed Type.{Node_Type,5}\",\"Section1/Export_Network_Data/Changed Type.{College,6}\",\"Section1/Export_Network_Data/Changed Type.{Lead_Unit,7}\",\"Section1/Export_Network_Data/Changed Type.{Data_Source_UID,8}\",\"Section1/Export_Network_Data/Changed Type.{Source_ID,9}\",\"Section1/Export_Network_Data/Changed Type.{Target_ID,10}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Node_Metrics_Proposals",
+        "columns": [
+          {
+            "name": "name",
+            "dataType": "string",
+            "sourceColumn": "name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "name"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "community",
+            "dataType": "int64",
+            "sourceColumn": "community",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "community"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "college",
+            "dataType": "string",
+            "sourceColumn": "college",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "college"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "lead_unit",
+            "dataType": "string",
+            "sourceColumn": "lead_unit",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "lead_unit"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "focus",
+            "dataType": "string",
+            "sourceColumn": "focus",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "focus"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "deg",
+            "dataType": "int64",
+            "sourceColumn": "deg",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "deg"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "ideg",
+            "dataType": "int64",
+            "sourceColumn": "ideg",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "ideg"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "odeg",
+            "dataType": "int64",
+            "sourceColumn": "odeg",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "odeg"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cc",
+            "dataType": "double",
+            "sourceColumn": "cc",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cc"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "bc",
+            "dataType": "double",
+            "sourceColumn": "bc",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "bc"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Node_Metrics_Proposals-08db640c-6eff-41d2-b53b-03c01c4435b3",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"U:\\!DataIn\\Networks\\Node_Metrics_Proposals.csv\"),[Delimiter=\",\", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"name\", type text}, {\"community\", Int64.Type}, {\"college\", type text}, {\"lead_unit\", type text}, {\"focus\", type text}, {\"deg\", Int64.Type}, {\"ideg\", Int64.Type}, {\"odeg\", Int64.Type}, {\"cc\", type number}, {\"bc\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":10,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/Node_Metrics_Proposals/Changed Type.{name,0}\",\"Section1/Node_Metrics_Proposals/Changed Type.{community,1}\",\"Section1/Node_Metrics_Proposals/Changed Type.{college,2}\",\"Section1/Node_Metrics_Proposals/Changed Type.{lead_unit,3}\",\"Section1/Node_Metrics_Proposals/Changed Type.{focus,4}\",\"Section1/Node_Metrics_Proposals/Changed Type.{deg,5}\",\"Section1/Node_Metrics_Proposals/Changed Type.{ideg,6}\",\"Section1/Node_Metrics_Proposals/Changed Type.{odeg,7}\",\"Section1/Node_Metrics_Proposals/Changed Type.{cc,8}\",\"Section1/Node_Metrics_Proposals/Changed Type.{bc,9}\"],\"ColumnCount\":10,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/Node_Metrics_Proposals/Changed Type.{name,0}\",\"Section1/Node_Metrics_Proposals/Changed Type.{community,1}\",\"Section1/Node_Metrics_Proposals/Changed Type.{college,2}\",\"Section1/Node_Metrics_Proposals/Changed Type.{lead_unit,3}\",\"Section1/Node_Metrics_Proposals/Changed Type.{focus,4}\",\"Section1/Node_Metrics_Proposals/Changed Type.{deg,5}\",\"Section1/Node_Metrics_Proposals/Changed Type.{ideg,6}\",\"Section1/Node_Metrics_Proposals/Changed Type.{odeg,7}\",\"Section1/Node_Metrics_Proposals/Changed Type.{cc,8}\",\"Section1/Node_Metrics_Proposals/Changed Type.{bc,9}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "b34474e6-c215-439f-9c89-0b9363004fee",
+        "fromTable": "Append1",
+        "fromColumn": "SourceTarget",
+        "toTable": "bigDataTotalDegree",
+        "toColumn": "Name"
+      },
+      {
+        "name": "8bc815f5-35aa-45c0-8d7e-304b522ef9e6",
+        "fromTable": "data_funded0",
+        "fromColumn": "SourceTarget",
+        "toTable": "bigDataTotalDegree",
+        "toColumn": "Name"
+      },
+      {
+        "name": "4d5cefcc-6982-4ac3-bd14-dbc2385e7761",
+        "fromTable": "data_funded0 (2)",
+        "fromColumn": "Source",
+        "toTable": "Faculty",
+        "toColumn": "Faculty"
+      },
+      {
+        "name": "c7a89df9-8cee-46a8-a1c1-0630ee1cbedf",
+        "fromTable": "data_funded0",
+        "fromColumn": "Source",
+        "toTable": "Faculty",
+        "toColumn": "Faculty"
+      },
+      {
+        "name": "7bcdd831-0871-4add-aa48-6e4f6965636e",
+        "fromTable": "Append1",
+        "fromColumn": "SourceTarget",
+        "toTable": "Faculty",
+        "toColumn": "Faculty",
+        "crossFilteringBehavior": "bothDirections",
+        "securityFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "5f034b72-f070-4a5c-843e-b61c60adc285",
+        "toCardinality": "many",
+        "fromTable": "Export_Network_Data",
+        "fromColumn": "Lead_Unit",
+        "toTable": "Node_Metrics_Proposals",
+        "toColumn": "lead_unit",
+        "crossFilteringBehavior": "bothDirections"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Version": "1.0.0",
+            "Language": "en-US",
+            "DynamicImprovement": "HighConfidence"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.85.963.0 (20.09)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"data_funded0\",\"bigDataTotalDegree\",\"data_funded0 (2)\",\"Append1\",\"Faculty\",\"Export_Network_Data\",\"Node_Metrics_Proposals\"]"
+      },
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":true,\"IgnoreInferredProperties\":true,\"IgnoreTimestamps\":true,\"SplitMultilineStrings\":true,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Perspectives\",\"Relationships\",\"Roles\",\"Tables\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Tables/Calculation Items\",\"Translations\"]}"
+      }
+    ]
+  }
+}
