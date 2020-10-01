@@ -6,11 +6,11 @@
 02. install Visual Studio (VS)
 00. accepted invitation on github 'rpilgrim_droid'
 03. open VS
-    ## select ellipses and 'Clone'
-    ## select 'Source Control' tab on left pane
-    ## Copy URL from github repository `https://github.com/tautme/tabular_test2`
-    ## Paste and Enter
-    ## select ellipses and 'Pull'
+    1. select ellipses and 'Clone'
+    1. select 'Source Control' tab on left pane
+    1. Copy URL from github repository `https://github.com/tautme/tabular_test2`
+    1. Paste and Enter
+    1. select ellipses and 'Pull'
 04. Edit `Model.bim' file
 05. Save
 06. select 'Source Control' and '+' 'Stage Changes'
@@ -28,12 +28,12 @@
 02. install Visual Studio (VS)
 00. accepted invitation on github 'rpilgrim_droid'
 03. open VS
-    ## select ellipses and 'Clone'
-    ## in bottom left, click 'fork' button and create new fork
-    ## select 'Source Control' tab on left pane
-    ## Copy URL from github repository `https://github.com/tautme/tabular_test2`
-    ## Paste and Enter
-    ## select ellipses and 'Pull'
+    1 select ellipses and 'Clone'
+    2 in bottom left, click 'fork' button and create new fork
+    3 select 'Source Control' tab on left pane
+    4 Copy URL from github repository `https://github.com/tautme/tabular_test2`
+    5 Paste and Enter
+    2 select ellipses and 'Pull'
 04. Edit `Model.bim' file
 05. Save
 06. select 'Source Control' and '+' 'Stage Changes'
@@ -44,5 +44,7 @@
 11. Select 'Pull Request'
 12. Add message for future and select 'Create Pull Request'
 13. 'Merge Pull Request'
+14. 'Confirm Merge'
 15. 'Delete Branch'
-10. every time you go to work on local version always pull (step 03.iv.) before looking at files and editing.
+16. Next time you make changes to branch, you 'push' (no need to publish branch again)
+17. *every time you go to work on local version always pull (step 03.iv.) before looking at files and editing.
