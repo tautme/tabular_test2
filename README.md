@@ -1,18 +1,22 @@
 # tabular_test2
 
 Steps
-1. install git
-2. install Visual Studio
-0. accepted invitation on github 'rpilgrim_droid'
-3. open VS
-    a. select 'Source Control' tab on left pane
-    c. select ellipses and 'Clone'
-    b. Copy URL from github repository `https://github.com/tautme/tabular_test2`
-    d. Paste and Enter
-4. Edit `Model.bim' file
-5. Save
-6. select 'Source Control' and '+' stage changes
-7. 
+01. install git
+02. install Visual Studio
+00. accepted invitation on github 'rpilgrim_droid'
+03. open VS
+    a. select ellipses and 'Clone'
+    b. select 'Source Control' tab on left pane
+    c. Copy URL from github repository `https://github.com/tautme/tabular_test2`
+    d. select ellipses and 'Pull'
+    e. Paste and Enter
+04. Edit `Model.bim' file
+05. Save
+06. select 'Source Control' and '+' 'Stage Changes'
+07. select check mark 'Commit' and enter message discribing changes made for future reference
+08. select ellipses and 'Push'
+09. go to github and check that changes have updated
+10. every time you go to work on local version always pull (step 3.d.) before looking at files and editing.
 
 
 NOTES FROM ADAM AND ROB CONVERSATION
