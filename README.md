@@ -5,11 +5,12 @@ Steps to link github and Visual Studio
 02. install Visual Studio (VS)
 00. accepted invitation on github 'rpilgrim_droid'
 03. open VS
-    1. select ellipses and 'Clone'
-    2. select 'Source Control' tab on left pane
-    3. Copy URL from github repository `https://github.com/tautme/tabular_test2`
-    4. select ellipses and 'Pull'
-    5. Paste and Enter
+    ## select ellipses and 'Clone'
+    ## in bottom left, click 'fork' button and create new fork
+    ## select 'Source Control' tab on left pane
+    ## Copy URL from github repository `https://github.com/tautme/tabular_test2`
+    ## select ellipses and 'Pull'
+    ## Paste and Enter
 04. Edit `Model.bim' file
 05. Save
 06. select 'Source Control' and '+' 'Stage Changes'
