@@ -1,22 +1,22 @@
 # tabular_test2
 
-Steps
+Steps to link github and Visual Studio
 01. install git
-02. install Visual Studio
+02. install Visual Studio (VS)
 00. accepted invitation on github 'rpilgrim_droid'
 03. open VS
-    a. select ellipses and 'Clone'
-    b. select 'Source Control' tab on left pane
-    c. Copy URL from github repository `https://github.com/tautme/tabular_test2`
-    d. select ellipses and 'Pull'
-    e. Paste and Enter
+    1. select ellipses and 'Clone'
+    2. select 'Source Control' tab on left pane
+    3. Copy URL from github repository `https://github.com/tautme/tabular_test2`
+    4. select ellipses and 'Pull'
+    5. Paste and Enter
 04. Edit `Model.bim' file
 05. Save
 06. select 'Source Control' and '+' 'Stage Changes'
 07. select check mark 'Commit' and enter message discribing changes made for future reference
 08. select ellipses and 'Push'
 09. go to github and check that changes have updated
-10. every time you go to work on local version always pull (step 3.d.) before looking at files and editing.
+10. every time you go to work on local version always pull (step 03.iv.) before looking at files and editing.
 
 
 NOTES FROM ADAM AND ROB CONVERSATION
