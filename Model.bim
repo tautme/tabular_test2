@@ -1,5 +1,5 @@
 {
-  "name": "04121b7b-cb5b-49e0-88d5-d7086af49ebb",
+  "name": "6e370848-01ac-4c27-bf59-0f34c69c3a7e",
   "compatibilityLevel": 1520,
   "model": {
     "culture": "en-US",
@@ -954,7 +954,7 @@
         "measures": [
           {
             "name": "Edge Count",
-            "expression": "COUNT(Append1[UID])",
+            "expression": "COUNT(Append1[UID]) + xxxxxxx",
             "formatString": "0",
             "annotations": [
               {
