@@ -954,7 +954,7 @@
         "measures": [
           {
             "name": "Edge Count",
-            "expression": "COUNT(Append1[UID]) + 2",
+            "expression": "COUNT(Append1[UID]) + 6",
             "formatString": "0",
             "annotations": [
               {
