@@ -1,0 +1,3425 @@
+{
+  "name": "3d89c5ee-7805-4bde-88db-c9e378f9bd03",
+  "compatibilityLevel": 1520,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DateTableTemplate_811c8b31-7c04-4942-bd3f-86f31e74b62c",
+        "isHidden": true,
+        "isPrivate": true,
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Date",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[Date]",
+            "formatString": "General Date",
+            "dataCategory": "PaddedDateTableDates",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"GeneralDateTimeLong\" FormatString=\"G\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "YEAR([Date])",
+            "formatString": "0",
+            "dataCategory": "Years",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "MonthNo",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "MONTH([Date])",
+            "formatString": "0",
+            "dataCategory": "MonthOfYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Month",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "sortByColumn": "MonthNo",
+            "dataCategory": "Months",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "QuarterNo",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "formatString": "0",
+            "dataCategory": "QuarterOfYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Quarter",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "sortByColumn": "QuarterNo",
+            "dataCategory": "Quarters",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Day",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "DAY([Date])",
+            "formatString": "0",
+            "dataCategory": "DayOfMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DateTableTemplate_811c8b31-7c04-4942-bd3f-86f31e74b62c-39bedcad-e68a-4883-94d2-34697547905b",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter"
+              },
+              {
+                "name": "Month",
+                "ordinal": 2,
+                "column": "Month"
+              },
+              {
+                "name": "Day",
+                "ordinal": 3,
+                "column": "Day"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ]
+      },
+      {
+        "name": "vehicles",
+        "columns": [
+          {
+            "name": "barrels08",
+            "dataType": "double",
+            "sourceColumn": "barrels08",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "barrels08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "barrelsA08",
+            "dataType": "int64",
+            "sourceColumn": "barrelsA08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "barrelsA08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "charge120",
+            "dataType": "int64",
+            "sourceColumn": "charge120",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "charge120"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "charge240",
+            "dataType": "int64",
+            "sourceColumn": "charge240",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "charge240"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "city08",
+            "dataType": "int64",
+            "sourceColumn": "city08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "city08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "city08U",
+            "dataType": "int64",
+            "sourceColumn": "city08U",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "city08U"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cityA08",
+            "dataType": "int64",
+            "sourceColumn": "cityA08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cityA08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cityA08U",
+            "dataType": "int64",
+            "sourceColumn": "cityA08U",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cityA08U"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cityCD",
+            "dataType": "int64",
+            "sourceColumn": "cityCD",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cityCD"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cityE",
+            "dataType": "int64",
+            "sourceColumn": "cityE",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cityE"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cityUF",
+            "dataType": "int64",
+            "sourceColumn": "cityUF",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cityUF"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "co2",
+            "dataType": "int64",
+            "sourceColumn": "co2",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "co2"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "co2A",
+            "dataType": "int64",
+            "sourceColumn": "co2A",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "co2A"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "co2TailpipeAGpm",
+            "dataType": "int64",
+            "sourceColumn": "co2TailpipeAGpm",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "co2TailpipeAGpm"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "co2TailpipeGpm",
+            "dataType": "double",
+            "sourceColumn": "co2TailpipeGpm",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "co2TailpipeGpm"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "comb08",
+            "dataType": "int64",
+            "sourceColumn": "comb08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "comb08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "comb08U",
+            "dataType": "int64",
+            "sourceColumn": "comb08U",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "comb08U"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "combA08",
+            "dataType": "int64",
+            "sourceColumn": "combA08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "combA08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "combA08U",
+            "dataType": "int64",
+            "sourceColumn": "combA08U",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "combA08U"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "combE",
+            "dataType": "int64",
+            "sourceColumn": "combE",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "combE"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "combinedCD",
+            "dataType": "int64",
+            "sourceColumn": "combinedCD",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "combinedCD"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "combinedUF",
+            "dataType": "int64",
+            "sourceColumn": "combinedUF",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "combinedUF"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cylinders",
+            "dataType": "int64",
+            "sourceColumn": "cylinders",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cylinders"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "displ",
+            "dataType": "double",
+            "sourceColumn": "displ",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "displ"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "drive",
+            "dataType": "string",
+            "sourceColumn": "drive",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "drive"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "engId",
+            "dataType": "int64",
+            "sourceColumn": "engId",
+            "formatString": "0",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "engId"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "eng_dscr",
+            "dataType": "string",
+            "sourceColumn": "eng_dscr",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "eng_dscr"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "feScore",
+            "dataType": "int64",
+            "sourceColumn": "feScore",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "feScore"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "fuelCost08",
+            "dataType": "int64",
+            "sourceColumn": "fuelCost08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "fuelCost08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "fuelCostA08",
+            "dataType": "int64",
+            "sourceColumn": "fuelCostA08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "fuelCostA08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "fuelType",
+            "dataType": "string",
+            "sourceColumn": "fuelType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "fuelType"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "fuelType1",
+            "dataType": "string",
+            "sourceColumn": "fuelType1",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "fuelType1"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "ghgScore",
+            "dataType": "int64",
+            "sourceColumn": "ghgScore",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "ghgScore"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "ghgScoreA",
+            "dataType": "int64",
+            "sourceColumn": "ghgScoreA",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "ghgScoreA"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "highway08",
+            "dataType": "int64",
+            "sourceColumn": "highway08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "highway08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "highway08U",
+            "dataType": "int64",
+            "sourceColumn": "highway08U",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "highway08U"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "highwayA08",
+            "dataType": "int64",
+            "sourceColumn": "highwayA08",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "highwayA08"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "highwayA08U",
+            "dataType": "int64",
+            "sourceColumn": "highwayA08U",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "highwayA08U"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "highwayCD",
+            "dataType": "int64",
+            "sourceColumn": "highwayCD",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "highwayCD"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "highwayE",
+            "dataType": "int64",
+            "sourceColumn": "highwayE",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "highwayE"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "highwayUF",
+            "dataType": "int64",
+            "sourceColumn": "highwayUF",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "highwayUF"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "hlv",
+            "dataType": "int64",
+            "sourceColumn": "hlv",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "hlv"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "hpv",
+            "dataType": "int64",
+            "sourceColumn": "hpv",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "hpv"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "id"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "lv2",
+            "dataType": "int64",
+            "sourceColumn": "lv2",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "lv2"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "lv4",
+            "dataType": "int64",
+            "sourceColumn": "lv4",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "lv4"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "make",
+            "dataType": "string",
+            "sourceColumn": "make",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "make"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "model",
+            "dataType": "string",
+            "sourceColumn": "model",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "model"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "mpgData",
+            "dataType": "string",
+            "sourceColumn": "mpgData",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "mpgData"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "phevBlended",
+            "dataType": "boolean",
+            "sourceColumn": "phevBlended",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Boolean\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Boolean#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "phevBlended"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "pv2",
+            "dataType": "int64",
+            "sourceColumn": "pv2",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "pv2"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "pv4",
+            "dataType": "int64",
+            "sourceColumn": "pv4",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "pv4"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "range",
+            "dataType": "int64",
+            "sourceColumn": "range",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "range"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "rangeCity",
+            "dataType": "int64",
+            "sourceColumn": "rangeCity",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "rangeCity"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "rangeCityA",
+            "dataType": "int64",
+            "sourceColumn": "rangeCityA",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "rangeCityA"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "rangeHwy",
+            "dataType": "int64",
+            "sourceColumn": "rangeHwy",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "rangeHwy"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "rangeHwyA",
+            "dataType": "int64",
+            "sourceColumn": "rangeHwyA",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "rangeHwyA"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "trany",
+            "dataType": "string",
+            "sourceColumn": "trany",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "trany"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "UCity",
+            "dataType": "double",
+            "sourceColumn": "UCity",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "UCity"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "UCityA",
+            "dataType": "int64",
+            "sourceColumn": "UCityA",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "UCityA"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "UHighway",
+            "dataType": "double",
+            "sourceColumn": "UHighway",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "UHighway"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "UHighwayA",
+            "dataType": "int64",
+            "sourceColumn": "UHighwayA",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "UHighwayA"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "VClass",
+            "dataType": "string",
+            "sourceColumn": "VClass",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "VClass"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "year"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "youSaveSpend",
+            "dataType": "int64",
+            "sourceColumn": "youSaveSpend",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "youSaveSpend"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "guzzler",
+            "dataType": "string",
+            "sourceColumn": "guzzler",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "guzzler"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "trans_dscr",
+            "dataType": "string",
+            "sourceColumn": "trans_dscr",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "trans_dscr"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "tCharger",
+            "dataType": "string",
+            "sourceColumn": "tCharger",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "tCharger"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "sCharger",
+            "dataType": "string",
+            "sourceColumn": "sCharger",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "sCharger"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "atvType",
+            "dataType": "string",
+            "sourceColumn": "atvType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "atvType"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "fuelType2",
+            "dataType": "string",
+            "sourceColumn": "fuelType2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "fuelType2"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "rangeA",
+            "dataType": "string",
+            "sourceColumn": "rangeA",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "rangeA"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "evMotor",
+            "dataType": "string",
+            "sourceColumn": "evMotor",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "evMotor"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "mfrCode",
+            "dataType": "string",
+            "sourceColumn": "mfrCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "mfrCode"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "c240Dscr",
+            "dataType": "string",
+            "sourceColumn": "c240Dscr",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "c240Dscr"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "charge240b",
+            "dataType": "int64",
+            "sourceColumn": "charge240b",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "charge240b"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "c240bDscr",
+            "dataType": "string",
+            "sourceColumn": "c240bDscr",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "c240bDscr"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "createdOn",
+            "dataType": "string",
+            "sourceColumn": "createdOn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "createdOn"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "modifiedOn",
+            "dataType": "string",
+            "sourceColumn": "modifiedOn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "modifiedOn"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "startStop",
+            "dataType": "string",
+            "sourceColumn": "startStop",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "startStop"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "phevCity",
+            "dataType": "int64",
+            "sourceColumn": "phevCity",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "phevCity"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "phevHwy",
+            "dataType": "int64",
+            "sourceColumn": "phevHwy",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "phevHwy"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "phevComb",
+            "dataType": "int64",
+            "sourceColumn": "phevComb",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "phevComb"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "vehicles-a391edee-2494-4296-96ca-0cb3e4aad34e",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\Users\\jahughes\\Documents\\vehicles.csv\"),[Delimiter=\",\", Columns=83, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"barrels08\", type number}, {\"barrelsA08\", Int64.Type}, {\"charge120\", Int64.Type}, {\"charge240\", Int64.Type}, {\"city08\", Int64.Type}, {\"city08U\", Int64.Type}, {\"cityA08\", Int64.Type}, {\"cityA08U\", Int64.Type}, {\"cityCD\", Int64.Type}, {\"cityE\", Int64.Type}, {\"cityUF\", Int64.Type}, {\"co2\", Int64.Type}, {\"co2A\", Int64.Type}, {\"co2TailpipeAGpm\", Int64.Type}, {\"co2TailpipeGpm\", type number}, {\"comb08\", Int64.Type}, {\"comb08U\", Int64.Type}, {\"combA08\", Int64.Type}, {\"combA08U\", Int64.Type}, {\"combE\", Int64.Type}, {\"combinedCD\", Int64.Type}, {\"combinedUF\", Int64.Type}, {\"cylinders\", Int64.Type}, {\"displ\", type number}, {\"drive\", type text}, {\"engId\", Int64.Type}, {\"eng_dscr\", type text}, {\"feScore\", Int64.Type}, {\"fuelCost08\", Int64.Type}, {\"fuelCostA08\", Int64.Type}, {\"fuelType\", type text}, {\"fuelType1\", type text}, {\"ghgScore\", Int64.Type}, {\"ghgScoreA\", Int64.Type}, {\"highway08\", Int64.Type}, {\"highway08U\", Int64.Type}, {\"highwayA08\", Int64.Type}, {\"highwayA08U\", Int64.Type}, {\"highwayCD\", Int64.Type}, {\"highwayE\", Int64.Type}, {\"highwayUF\", Int64.Type}, {\"hlv\", Int64.Type}, {\"hpv\", Int64.Type}, {\"id\", Int64.Type}, {\"lv2\", Int64.Type}, {\"lv4\", Int64.Type}, {\"make\", type text}, {\"model\", type text}, {\"mpgData\", type text}, {\"phevBlended\", type logical}, {\"pv2\", Int64.Type}, {\"pv4\", Int64.Type}, {\"range\", Int64.Type}, {\"rangeCity\", Int64.Type}, {\"rangeCityA\", Int64.Type}, {\"rangeHwy\", Int64.Type}, {\"rangeHwyA\", Int64.Type}, {\"trany\", type text}, {\"UCity\", type number}, {\"UCityA\", Int64.Type}, {\"UHighway\", type number}, {\"UHighwayA\", Int64.Type}, {\"VClass\", type text}, {\"year\", Int64.Type}, {\"youSaveSpend\", Int64.Type}, {\"guzzler\", type text}, {\"trans_dscr\", type text}, {\"tCharger\", type text}, {\"sCharger\", type text}, {\"atvType\", type text}, {\"fuelType2\", type text}, {\"rangeA\", type text}, {\"evMotor\", type text}, {\"mfrCode\", type text}, {\"c240Dscr\", type text}, {\"charge240b\", Int64.Type}, {\"c240bDscr\", type text}, {\"createdOn\", type text}, {\"modifiedOn\", type text}, {\"startStop\", type text}, {\"phevCity\", Int64.Type}, {\"phevHwy\", Int64.Type}, {\"phevComb\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "emissions",
+        "columns": [
+          {
+            "name": "efid",
+            "dataType": "string",
+            "sourceColumn": "efid",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "efid"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "id"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "salesArea",
+            "dataType": "int64",
+            "sourceColumn": "salesArea",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "salesArea"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "score",
+            "dataType": "int64",
+            "sourceColumn": "score",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "score"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "scoreAlt",
+            "dataType": "int64",
+            "sourceColumn": "scoreAlt",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "scoreAlt"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "smartwayScore",
+            "dataType": "int64",
+            "sourceColumn": "smartwayScore",
+            "formatString": "0",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "smartwayScore"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "standard",
+            "dataType": "string",
+            "sourceColumn": "standard",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "standard"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "stdText",
+            "dataType": "string",
+            "sourceColumn": "stdText",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "stdText"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "emissions-983e06ba-9f0b-449f-930c-2e454a5492ec",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\Users\\jahughes\\Documents\\emissions.csv\"),[Delimiter=\",\", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"efid\", type text}, {\"id\", Int64.Type}, {\"salesArea\", Int64.Type}, {\"score\", Int64.Type}, {\"scoreAlt\", Int64.Type}, {\"smartwayScore\", Int64.Type}, {\"standard\", type text}, {\"stdText\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Measure",
+            "expression": "SUM(emissions[score]) + 3",
+            "formatString": "0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "mtcars",
+        "columns": [
+          {
+            "name": "make",
+            "dataType": "string",
+            "sourceColumn": "make",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "make"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "model",
+            "dataType": "string",
+            "sourceColumn": "model",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "String#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "model"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "mpg",
+            "dataType": "double",
+            "sourceColumn": "mpg",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "mpg"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "cyl",
+            "dataType": "int64",
+            "sourceColumn": "cyl",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "cyl"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "disp",
+            "dataType": "double",
+            "sourceColumn": "disp",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "disp"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "hp",
+            "dataType": "int64",
+            "sourceColumn": "hp",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "hp"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "drat",
+            "dataType": "double",
+            "sourceColumn": "drat",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "drat"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "wt",
+            "dataType": "double",
+            "sourceColumn": "wt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "wt"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "qsec",
+            "dataType": "double",
+            "sourceColumn": "qsec",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Double#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "qsec"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "vs",
+            "dataType": "int64",
+            "sourceColumn": "vs",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "vs"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "am",
+            "dataType": "int64",
+            "sourceColumn": "am",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "am"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "gear",
+            "dataType": "int64",
+            "sourceColumn": "gear",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "gear"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          },
+          {
+            "name": "carb",
+            "dataType": "int64",
+            "sourceColumn": "carb",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "DataTypeAtRefresh",
+                "value": "Int64#####not a type"
+              },
+              {
+                "name": "PBI_NameAtRefresh",
+                "value": "carb"
+              },
+              {
+                "name": "PBI_WasHiddenAtRefresh",
+                "value": "False"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "mtcars-278f03f2-206f-4057-b37f-4610274b0717",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\Users\\jahughes\\Documents\\mtcars.csv\"),[Delimiter=\",\", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"make\", type text}, {\"model\", type text}, {\"mpg\", type number}, {\"cyl\", Int64.Type}, {\"disp\", type number}, {\"hp\", Int64.Type}, {\"drat\", type number}, {\"wt\", type number}, {\"qsec\", type number}, {\"vs\", Int64.Type}, {\"am\", Int64.Type}, {\"gear\", Int64.Type}, {\"carb\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "0302246c-8a93-433b-8cfb-46ee0b7b47ee",
+        "fromTable": "emissions",
+        "fromColumn": "id",
+        "toTable": "vehicles",
+        "toColumn": "id"
+      },
+      {
+        "name": "508a93f0-edfb-4082-bdc6-59f44d15b29d",
+        "fromTable": "vehicles",
+        "fromColumn": "model",
+        "toTable": "mtcars",
+        "toColumn": "model"
+      },
+      {
+        "name": "2e911b78-ba95-42bc-b80d-d9d5294935bb",
+        "toCardinality": "many",
+        "fromTable": "vehicles",
+        "fromColumn": "make",
+        "toTable": "mtcars",
+        "toColumn": "make",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Version": "1.0.0",
+            "Language": "en-US",
+            "DynamicImprovement": "HighConfidence"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "expressions": [
+      {
+        "name": "Errors in vehicles",
+        "kind": "m",
+        "expression": [
+          "let",
+          "Source = vehicles,",
+          "  #\"Detected Type Mismatches\" = let",
+          "    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Source, Table.ColumnsOfType(Source, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),",
+          "    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),",
+          "    fieldNames = Record.FieldNames(recordTypeFields),",
+          "    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),",
+          "    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = \"The type of the value does not match the type of the column.\", Detail = v], fieldTypes{i}})",
+          "in",
+          "    Table.TransformColumns(Source, pairs),",
+          "  #\"Added Index\" = Table.AddIndexColumn(#\"Detected Type Mismatches\", \"Row Number\" ,1),",
+          "  #\"Kept Errors\" = Table.SelectRowsWithErrors(#\"Added Index\", {\"barrels08\", \"barrelsA08\", \"charge120\", \"charge240\", \"city08\", \"city08U\", \"cityA08\", \"cityA08U\", \"cityCD\", \"cityE\", \"cityUF\", \"co2\", \"co2A\", \"co2TailpipeAGpm\", \"co2TailpipeGpm\", \"comb08\", \"comb08U\", \"combA08\", \"combA08U\", \"combE\", \"combinedCD\", \"combinedUF\", \"cylinders\", \"displ\", \"drive\", \"engId\", \"eng_dscr\", \"feScore\", \"fuelCost08\", \"fuelCostA08\", \"fuelType\", \"fuelType1\", \"ghgScore\", \"ghgScoreA\", \"highway08\", \"highway08U\", \"highwayA08\", \"highwayA08U\", \"highwayCD\", \"highwayE\", \"highwayUF\", \"hlv\", \"hpv\", \"id\", \"lv2\", \"lv4\", \"make\", \"model\", \"mpgData\", \"phevBlended\", \"pv2\", \"pv4\", \"range\", \"rangeCity\", \"rangeCityA\", \"rangeHwy\", \"rangeHwyA\", \"trany\", \"UCity\", \"UCityA\", \"UHighway\", \"UHighwayA\", \"VClass\", \"year\", \"youSaveSpend\", \"guzzler\", \"trans_dscr\", \"tCharger\", \"sCharger\", \"atvType\", \"fuelType2\", \"rangeA\", \"evMotor\", \"mfrCode\", \"c240Dscr\", \"charge240b\", \"c240bDscr\", \"createdOn\", \"modifiedOn\", \"startStop\", \"phevCity\", \"phevHwy\", \"phevComb\"}),",
+          "  #\"Reordered Columns\" = Table.ReorderColumns(#\"Kept Errors\", {\"Row Number\", \"barrels08\", \"barrelsA08\", \"charge120\", \"charge240\", \"city08\", \"city08U\", \"cityA08\", \"cityA08U\", \"cityCD\", \"cityE\", \"cityUF\", \"co2\", \"co2A\", \"co2TailpipeAGpm\", \"co2TailpipeGpm\", \"comb08\", \"comb08U\", \"combA08\", \"combA08U\", \"combE\", \"combinedCD\", \"combinedUF\", \"cylinders\", \"displ\", \"drive\", \"engId\", \"eng_dscr\", \"feScore\", \"fuelCost08\", \"fuelCostA08\", \"fuelType\", \"fuelType1\", \"ghgScore\", \"ghgScoreA\", \"highway08\", \"highway08U\", \"highwayA08\", \"highwayA08U\", \"highwayCD\", \"highwayE\", \"highwayUF\", \"hlv\", \"hpv\", \"id\", \"lv2\", \"lv4\", \"make\", \"model\", \"mpgData\", \"phevBlended\", \"pv2\", \"pv4\", \"range\", \"rangeCity\", \"rangeCityA\", \"rangeHwy\", \"rangeHwyA\", \"trany\", \"UCity\", \"UCityA\", \"UHighway\", \"UHighwayA\", \"VClass\", \"year\", \"youSaveSpend\", \"guzzler\", \"trans_dscr\", \"tCharger\", \"sCharger\", \"atvType\", \"fuelType2\", \"rangeA\", \"evMotor\", \"mfrCode\", \"c240Dscr\", \"charge240b\", \"c240bDscr\", \"createdOn\", \"modifiedOn\", \"startStop\", \"phevCity\", \"phevHwy\", \"phevComb\"})",
+          "in",
+          "  #\"Reordered Columns\""
+        ],
+        "queryGroup": "Query Errors - 2020-10-05 16:20:05",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "queryGroups": [
+      {
+        "folder": "Query Errors - 2020-10-05 16:20:05",
+        "description": "Errors in queries that were loaded on 2020-10-05 16:20:05.",
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"vehicles\",\"Errors in vehicles\",\"emissions\",\"mtcars\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.85.985.0 (20.09)"
+      },
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":true,\"IgnoreInferredProperties\":true,\"IgnoreTimestamps\":true,\"SplitMultilineStrings\":true,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Perspectives\",\"Relationships\",\"Roles\",\"Tables\",\"Tables/Calculation Items\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Translations\"]}"
+      }
+    ]
+  }
+}
