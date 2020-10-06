@@ -719,6 +719,10 @@
           {
             "name": "New Measure",
             "expression": "SUM(Customer[Total Children]) * SUM('Product'[List Price]) + AVERAGE('Internet Sales'[Unit Price]) * 2000000"
+          },
+          {
+            "name": "New Measure 1",
+            "expression": "SUM(Customer[Total Children]) * 2000000"
           }
         ],
         "annotations": [
