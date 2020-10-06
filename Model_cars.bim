@@ -9,6 +9,12 @@
     },
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
     "sourceQueryCulture": "en-US",
+    "dataSources": [
+      {
+        "name": "bak",
+        "impersonationMode": "impersonateServiceAccount"
+      }
+    ],
     "tables": [
       {
         "name": "DateTableTemplate_811c8b31-7c04-4942-bd3f-86f31e74b62c",
@@ -365,11 +371,11 @@
             "dataType": "int64",
             "sourceColumn": "city08",
             "formatString": "0",
-            "summarizeBy": "sum",
+            "summarizeBy": "none",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               },
               {
                 "name": "Format",
@@ -394,11 +400,11 @@
             "dataType": "int64",
             "sourceColumn": "city08U",
             "formatString": "0",
-            "summarizeBy": "sum",
+            "summarizeBy": "none",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               },
               {
                 "name": "Format",
@@ -1229,11 +1235,11 @@
             "dataType": "int64",
             "sourceColumn": "highway08",
             "formatString": "0",
-            "summarizeBy": "sum",
+            "summarizeBy": "none",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               },
               {
                 "name": "Format",
@@ -1748,11 +1754,11 @@
             "dataType": "int64",
             "sourceColumn": "range",
             "formatString": "0",
-            "summarizeBy": "sum",
+            "summarizeBy": "none",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               },
               {
                 "name": "Format",
