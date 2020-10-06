@@ -9,12 +9,6 @@
     },
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
     "sourceQueryCulture": "en-US",
-    "dataSources": [
-      {
-        "name": "bak",
-        "impersonationMode": "impersonateServiceAccount"
-      }
-    ],
     "tables": [
       {
         "name": "DateTableTemplate_811c8b31-7c04-4942-bd3f-86f31e74b62c",
