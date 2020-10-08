@@ -718,7 +718,7 @@
         "measures": [
           {
             "name": "child product sale",
-            "expression": "SUM(Customer[Total Children]) * 9000000000"
+            "expression": "SUM(Customer[Total Children]) * SUM('Product'[List Price]) + AVERAGE('Internet Sales'[Unit Price]) * 9"
           },
           {
             "name": "child million",
