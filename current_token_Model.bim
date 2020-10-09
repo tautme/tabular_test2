@@ -107,7 +107,7 @@
         ],
         "partitions": [
           {
-            "name": "emissions_simp-551ccb88-7b5f-4080-91cd-8cf90aec8de1",
+            "name": "emissions_simp-74267edf-e91b-4170-9d76-de076292fcf1",
             "mode": "directQuery",
             "source": {
               "type": "m",
