@@ -722,11 +722,11 @@
           },
           {
             "name": "child million",
-            "expression": "SUM(Customer[Total Children]) * 2000000"
+            "expression": "SUM(Customer[Total Children]) * 2"
           },
           {
             "name": "child copy",
-            "expression": "SUM(Customer[Total Children]) * 2000000"
+            "expression": "SUM(Customer[Total Children]) * 2"
           }
         ],
         "annotations": [
